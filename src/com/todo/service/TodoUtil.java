@@ -11,6 +11,7 @@ import java.io.IOException;
 import java.io.PrintStream;
 import java.io.Reader;
 import java.io.Writer;
+import java.text.SimpleDateFormat;
 import java.util.*;
 
 import com.todo.dao.TodoItem;
@@ -95,7 +96,7 @@ public class TodoUtil {
 					String new_category = sc.nextLine().trim();
 					item.setCategory(new_category);
 				}
-				else if(update.contains("제목")) {
+				if(update.contains("제목")) {
 					String new_title;
 					while(true){
 					System.out.print("새 제목 : ");
@@ -107,23 +108,22 @@ public class TodoUtil {
 					}
 					item.setTitle(new_title);
 				}
-				else if(update.contains("내용")) {
+				if(update.contains("내용")) {
 					System.out.print("새 내용 : ");
 					String new_description = sc.nextLine().trim();
 					item.setDesc(new_description);
 				}
-				else if(update.contains("마감")) {
+				if(update.contains("마감")) {
 					System.out.print("새 마감날짜 : ");
 					String new_due_date = sc.nextLine().trim();
 					item.setDue_date(new_due_date);
 				}
-				else {
-					System.out.println("잘못 입력하셨습니다. 변경이 취소됩니다.");
-					return;
-				}
+			SimpleDateFormat f = new SimpleDateFormat("yyyy/MM/dd kk:mm:ss");
+			item.setCurrent_date(f.format ( new Date()));
 			break;
 			}
 		}
+		
 		System.out.println(number + "번이 변경되었습니다.");
 	}
 		
