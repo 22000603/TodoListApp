@@ -14,6 +14,7 @@ public class TodoMain {
 		TodoList l = new TodoList();
 		boolean isList = false;
 		boolean quit = false;
+		String keyword;
 		TodoUtil.loadList(l, "todolist.txt");
 		Menu.displaymenu();
 		do {
@@ -64,6 +65,25 @@ public class TodoMain {
 			
 			case "help":
 				Menu.displaymenu();
+				break;
+				
+			case "find":
+				keyword = sc.next();
+				TodoUtil.findKeyword(l, keyword);
+				break;
+				
+			case "find_cate":
+				keyword = sc.next();
+				TodoUtil.findCategoryKeyword(l, keyword);
+				break;
+				
+			case "ls_date_desc":
+				l.sortByDateDesc();
+				isList = true;
+				break;
+				
+			case "ls_cate":
+				TodoUtil.listCategory(l);
 				break;
 
 			default:

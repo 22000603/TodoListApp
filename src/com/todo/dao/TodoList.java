@@ -3,6 +3,7 @@ package com.todo.dao;
 import java.util.*;
 
 import com.todo.service.TodoSortByDate;
+import com.todo.service.TodoSortByDateDesc;
 import com.todo.service.TodoSortByName;
 
 public class TodoList {
@@ -34,14 +35,6 @@ public class TodoList {
 		Collections.sort(list, new TodoSortByName());
 
 	}
-/*
-	public void listAll() {
-		System.out.println("\n"
-				+ "inside list_All method\n");
-		for (TodoItem myitem : list) {
-			System.out.println(myitem.getTitle() + myitem.getDesc());
-		}
-	}*/
 	
 	public void reverseList() {
 		Collections.reverse(list);
@@ -49,6 +42,10 @@ public class TodoList {
 
 	public void sortByDate() {
 		Collections.sort(list, new TodoSortByDate());
+	}
+	
+	public void sortByDateDesc() {
+		Collections.sort(list, new TodoSortByDateDesc());
 	}
 
 	public int indexOf(TodoItem t) {
@@ -61,4 +58,7 @@ public class TodoList {
 		}
 		return false;
 	}
+
+	
+
 }
